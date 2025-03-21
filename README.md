@@ -42,7 +42,7 @@ Before you begin, ensure you have the following:
 ### **Installation**
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/ai-chatbot-customer-support.git
+   git clone https://github.com/henrymbuguak/ai-chatbot-customer-support.git
    cd ai-chatbot-customer-support
    ```
 
@@ -66,7 +66,7 @@ Before you begin, ensure you have the following:
 
 5. **Run the Flask app**:
    ```bash
-   python app.py
+   python manage.py
    ```
    Visit `http://127.0.0.1:5000/` in your browser to see the chatbot in action.
 
@@ -76,31 +76,64 @@ Before you begin, ensure you have the following:
 ```
 ai-chatbot-customer-support/
 │
-├── app/                   # Main application code
-│   ├── __init__.py        # Flask app initialization
-│   ├── routes.py          # API endpoints
-│   ├── models.py          # Data models (if needed)
-│   └── utils/             # Utility functions
+├── app/                         # Main application code
+│   ├── __init__.py              # Flask app initialization & Blueprint registration
+│   ├── routes.py                # API route definitions
+│   ├── models/                  # Database models (SQLAlchemy, if needed)
+│   │   ├── __init__.py          # Initialize models package
+│   │   ├── user.py              # User model
+│   │   ├── chatbot.py           # Chatbot-related models
+│   ├── utils/                   # Utility functions
+│   │   ├── helpers.py           # Helper functions
+│   │   ├── logger.py            # Logging configuration
+│   │   └── validators.py        # Input validation functions
+│   ├── services/                # Business logic layer
+│   │   ├── chatbot_service.py   # AI chatbot logic
+│   │   ├── user_service.py      # User-related business logic
+│   ├── api/                     # API endpoints (Blueprints)
+│   │   ├── __init__.py          # Register all APIs
+│   │   ├── chatbot.py           # Chatbot API
+│   │   ├── user.py              # User management API
+│   │   ├── auth.py              # Authentication API
+│   ├── templates/               # Jinja2 HTML templates (if needed)
+│   ├── static/                  # Static assets (CSS, JS, images)
 │
-├── tests/                 # Unit and integration tests
-│   ├── test_routes.py     # Tests for API endpoints
-│   └── test_utils.py      # Tests for utility functions
+├── tests/                       # Unit and integration tests
+│   ├── conftest.py              # Pytest fixtures
+│   ├── test_routes/             # Tests for API routes
+│   │   ├── test_chatbot.py
+│   │   ├── test_user.py
+│   ├── test_services/           # Business logic tests
+│   ├── test_models/             # Database model tests
+│   ├── test_utils/              # Utility function tests
 │
-├── docs/                  # Documentation
-│   ├── architecture.md    # Architecture overview
-│   └── setup_guide.md     # Step-by-step setup instructions
+├── docs/                        # Documentation
+│   ├── architecture.md          # Architecture overview
+│   ├── setup_guide.md           # Step-by-step setup instructions
 │
-├── config.py              # Configuration settings
-├── .env_copy              # Template for environment variables (rename to .env)
-├── .gitignore             # Specifies files to ignore in version control
-├── requirements.txt       # Project dependencies
-├── app.py                 # Entry point for the Flask app
-├── README.md              # Project documentation
-├── CONTRIBUTING.md        # Guidelines for contributors
-├── LICENSE                # Project license
-└── .github/               # GitHub-specific files
-    ├── ISSUE_TEMPLATE/    # Issue templates
-    └── workflows/         # CI/CD workflows
+├── instance/                    # Configuration files (ignored in Git)
+│   ├── config.py                # Local config (for development)
+│   ├── config.example.py        # Example config file
+│
+├── migrations/                  # Database migrations (Flask-Migrate)
+│
+├── logs/                        # Log files (optional)
+│
+├── .github/                     # GitHub-specific files
+│   ├── ISSUE_TEMPLATE/          # Issue templates
+│   ├── workflows/               # CI/CD workflows
+│
+├── .env_copy                    # Template for environment variables (rename to .env)
+├── .gitignore                   # Specifies files to ignore in version control
+├── Dockerfile                   # Docker configuration
+├── docker-compose.yml           # Docker Compose configuration
+├── Makefile                     # Common project commands (optional)
+├── requirements.txt             # Production dependencies
+├── requirements-dev.txt         # Development dependencies
+├── manage.py                    # Command-line utility for running the app
+├── README.md                    # Project documentation
+├── CONTRIBUTING.md              # Guidelines for contributors
+├── LICENSE                      # Project license
 ```
 
 ---
@@ -144,8 +177,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## **Contact**
 Have questions or feedback? Feel free to reach out:
-- **Email**: your-email@example.com
-- **GitHub Issues**: [Open an Issue](https://github.com/your-username/ai-chatbot-customer-support/issues)
+- **[Henry Mbugua](https://www.linkedin.com/in/henrymbugua/)**
+- **GitHub Issues**: [Open an Issue](https://github.com/henrymbuguak/ai-chatbot-customer-support/issues)
 
 ---
 
